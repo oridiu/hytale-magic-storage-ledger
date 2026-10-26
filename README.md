@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="docs/images/banner.png" alt="Magic Storage Ledger: Find anything in your chests" width="100%">
+</p>
+
 # Magic Storage Ledger
 
 Which chest held the copper again? Magic Storage Ledger is a Hytale server plugin for Chapter 1 (Update 7) that adds the **Magic Ledger**: a magic register that lists what the chests around you hold and shows you the way to the item you pick. No signs, no labels, no sorting by hand.
