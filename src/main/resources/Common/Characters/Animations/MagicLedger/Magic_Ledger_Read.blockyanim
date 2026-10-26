@@ -1,0 +1,335 @@
+{
+    "formatVersion":  1,
+    "duration":  60,
+    "holdLastKeyframe":  true,
+    "nodeAnimations":  {
+                           "R-Arm":  {
+                                         "position":  [
+
+                                                      ],
+                                         "orientation":  [
+                                                             {
+                                                                 "time":  0,
+                                                                 "delta":  {
+                                                                               "x":  -0.242566,
+                                                                               "y":  -0.11119,
+                                                                               "z":  -0.101967,
+                                                                               "w":  0.958333
+                                                                           },
+                                                                 "interpolationType":  "smooth"
+                                                             }
+                                                         ],
+                                         "shapeStretch":  [
+
+                                                          ],
+                                         "shapeVisible":  [
+
+                                                          ],
+                                         "shapeUvOffset":  [
+
+                                                           ]
+                                     },
+                           "R-Forearm":  {
+                                             "position":  [
+
+                                                          ],
+                                             "orientation":  [
+                                                                 {
+                                                                     "time":  0,
+                                                                     "delta":  {
+                                                                                   "x":  -0.258819,
+                                                                                   "y":  0,
+                                                                                   "z":  0,
+                                                                                   "w":  0.965926
+                                                                               },
+                                                                     "interpolationType":  "smooth"
+                                                                 }
+                                                             ],
+                                             "shapeStretch":  [
+
+                                                              ],
+                                             "shapeVisible":  [
+
+                                                              ],
+                                             "shapeUvOffset":  [
+
+                                                               ]
+                                         },
+                           "R-Hand":  {
+                                          "position":  [
+
+                                                       ],
+                                          "orientation":  [
+                                                              {
+                                                                  "time":  0,
+                                                                  "delta":  {
+                                                                                "x":  -0.176777,
+                                                                                "y":  -0.476727,
+                                                                                "z":  0.047367,
+                                                                                "w":  0.859789
+                                                                            },
+                                                                  "interpolationType":  "smooth"
+                                                              }
+                                                          ],
+                                          "shapeStretch":  [
+
+                                                           ],
+                                          "shapeVisible":  [
+
+                                                           ],
+                                          "shapeUvOffset":  [
+
+                                                            ]
+                                      },
+                           "L-Arm":  {
+                                         "position":  [
+                                                          {
+                                                              "time":  0,
+                                                              "delta":  {
+                                                                            "x":  4,
+                                                                            "y":  0,
+                                                                            "z":  4
+                                                                        },
+                                                              "interpolationType":  "smooth"
+                                                          }
+                                                      ],
+                                         "orientation":  [
+                                                             {
+                                                                 "time":  0,
+                                                                 "delta":  {
+                                                                               "x":  -0.385817,
+                                                                               "y":  -0.403035,
+                                                                               "z":  0.317849,
+                                                                               "w":  0.766603
+                                                                           },
+                                                                 "interpolationType":  "smooth"
+                                                             }
+                                                         ],
+                                         "shapeStretch":  [
+
+                                                          ],
+                                         "shapeVisible":  [
+
+                                                          ],
+                                         "shapeUvOffset":  [
+
+                                                           ]
+                                     },
+                           "L-Forearm":  {
+                                             "position":  [
+
+                                                          ],
+                                             "orientation":  [
+                                                                 {
+                                                                     "time":  0,
+                                                                     "delta":  {
+                                                                                   "x":  0.382683,
+                                                                                   "y":  0,
+                                                                                   "z":  0,
+                                                                                   "w":  -0.92388
+                                                                               },
+                                                                     "interpolationType":  "smooth"
+                                                                 }
+                                                             ],
+                                             "shapeStretch":  [
+
+                                                              ],
+                                             "shapeVisible":  [
+
+                                                              ],
+                                             "shapeUvOffset":  [
+
+                                                               ]
+                                         },
+                           "L-Hand":  {
+                                          "position":  [
+
+                                                       ],
+                                          "orientation":  [
+                                                              {
+                                                                  "time":  0,
+                                                                  "delta":  {
+                                                                                "x":  -0.258819,
+                                                                                "y":  0,
+                                                                                "z":  0,
+                                                                                "w":  0.965926
+                                                                            },
+                                                                  "interpolationType":  "smooth"
+                                                              }
+                                                          ],
+                                          "shapeStretch":  [
+
+                                                           ],
+                                          "shapeVisible":  [
+
+                                                           ],
+                                          "shapeUvOffset":  [
+
+                                                            ]
+                                      },
+                           "Handle":  {
+                                          "position":  [
+                                                           {
+                                                               "time":  0,
+                                                               "delta":  {
+                                                                             "x":  6,
+                                                                             "y":  -3,
+                                                                             "z":  3
+                                                                         },
+                                                               "interpolationType":  "smooth"
+                                                           }
+                                                       ],
+                                          "orientation":  [
+                                                              {
+                                                                  "time":  0,
+                                                                  "delta":  {
+                                                                                "x":  0.353553,
+                                                                                "y":  -0.353553,
+                                                                                "z":  0.612372,
+                                                                                "w":  -0.612372
+                                                                            },
+                                                                  "interpolationType":  "smooth"
+                                                              }
+                                                          ],
+                                          "shapeStretch":  [
+
+                                                           ],
+                                          "shapeVisible":  [
+
+                                                           ],
+                                          "shapeUvOffset":  [
+
+                                                            ]
+                                      },
+                           "Book-Top":  {
+                                            "position":  [
+
+                                                         ],
+                                            "orientation":  [
+                                                                {
+                                                                    "time":  0,
+                                                                    "delta":  {
+                                                                                  "x":  0,
+                                                                                  "y":  0,
+                                                                                  "z":  0.608761,
+                                                                                  "w":  0.793353
+                                                                              },
+                                                                    "interpolationType":  "smooth"
+                                                                }
+                                                            ],
+                                            "shapeStretch":  [
+
+                                                             ],
+                                            "shapeVisible":  [
+
+                                                             ],
+                                            "shapeUvOffset":  [
+
+                                                              ]
+                                        },
+                           "Book-Bot":  {
+                                            "position":  [
+
+                                                         ],
+                                            "orientation":  [
+                                                                {
+                                                                    "time":  0,
+                                                                    "delta":  {
+                                                                                  "x":  0,
+                                                                                  "y":  0,
+                                                                                  "z":  -0.608761,
+                                                                                  "w":  0.793353
+                                                                              },
+                                                                    "interpolationType":  "smooth"
+                                                                }
+                                                            ],
+                                            "shapeStretch":  [
+
+                                                             ],
+                                            "shapeVisible":  [
+
+                                                             ],
+                                            "shapeUvOffset":  [
+
+                                                              ]
+                                        },
+                           "Lock-Front":  {
+                                              "position":  [
+
+                                                           ],
+                                              "orientation":  [
+                                                                  {
+                                                                      "time":  0,
+                                                                      "delta":  {
+                                                                                    "x":  0,
+                                                                                    "y":  0,
+                                                                                    "z":  0.5,
+                                                                                    "w":  0.866025
+                                                                                },
+                                                                      "interpolationType":  "smooth"
+                                                                  }
+                                                              ],
+                                              "shapeStretch":  [
+
+                                                               ],
+                                              "shapeVisible":  [
+
+                                                               ],
+                                              "shapeUvOffset":  [
+
+                                                                ]
+                                          },
+                           "Bookmark":  {
+                                            "position":  [
+
+                                                         ],
+                                            "orientation":  [
+                                                                {
+                                                                    "time":  0,
+                                                                    "delta":  {
+                                                                                  "x":  0.5,
+                                                                                  "y":  0,
+                                                                                  "z":  0,
+                                                                                  "w":  0.866025
+                                                                              },
+                                                                    "interpolationType":  "smooth"
+                                                                }
+                                                            ],
+                                            "shapeStretch":  [
+
+                                                             ],
+                                            "shapeVisible":  [
+
+                                                             ],
+                                            "shapeUvOffset":  [
+
+                                                              ]
+                                        },
+                           "Head":  {
+                                        "position":  [
+
+                                                     ],
+                                        "orientation":  [
+                                                            {
+                                                                "time":  0,
+                                                                "delta":  {
+                                                                              "x":  0.199,
+                                                                              "y":  0,
+                                                                              "z":  0,
+                                                                              "w":  0.98
+                                                                          },
+                                                                "interpolationType":  "smooth"
+                                                            }
+                                                        ],
+                                        "shapeStretch":  [
+
+                                                         ],
+                                        "shapeVisible":  [
+
+                                                         ],
+                                        "shapeUvOffset":  [
+
+                                                          ]
+                                    }
+                       }
+}

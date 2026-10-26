@@ -1,0 +1,21 @@
+{
+  "Parent": "Spellbook",
+  "Animations": {
+    "Read": {
+      "ThirdPerson": "Characters/Animations/MagicLedger/Magic_Ledger_Read.blockyanim",
+      "ThirdPersonMoving": "Characters/Animations/MagicLedger/Magic_Ledger_Read.blockyanim",
+      "FirstPerson": "Characters/Animations/MagicLedger/Magic_Ledger_Read_FPS.blockyanim",
+      "Looping": true,
+      "Speed": 1,
+      "BlendingDuration": 0.25
+    },
+    "Close": {
+      "ThirdPerson": "Characters/Animations/Items/Main_Handed/Item/Idle.blockyanim",
+      "ThirdPersonMoving": "Characters/Animations/Items/Main_Handed/Item/Idle.blockyanim",
+      "FirstPerson": "Characters/Animations/Items/Main_Handed/Item/Idle_FPS.blockyanim",
+      "Looping": false,
+      "Speed": 2,
+      "BlendingDuration": 0.25
+    }
+  }
+}

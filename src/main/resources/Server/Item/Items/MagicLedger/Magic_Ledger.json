@@ -1,0 +1,78 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.Magic_Ledger.name",
+    "Description": "server.items.Magic_Ledger.description"
+  },
+  "Categories": [
+    "Items.Tools"
+  ],
+  "Quality": "Rare",
+  "MaxStack": 1,
+  "Model": "Items/MagicLedger/Magic_Ledger.blockymodel",
+  "Texture": "Items/MagicLedger/Magic_Ledger_Texture.png",
+  "Scale": 1.2,
+  "PlayerAnimationsId": "MagicLedger",
+  "Icon": "Icons/ItemsGenerated/Magic_Ledger.png",
+  "IconProperties": {
+    "Scale": 0.745,
+    "Translation": [
+      -7.8,
+      -7.8
+    ],
+    "Rotation": [
+      45,
+      90,
+      0
+    ]
+  },
+  "DroppedItemAnimation": "Items/Animations/Dropped/Dropped_Diagonal_Left.blockyanim",
+  "Light": {
+    "Color": "#3aa",
+    "Radius": 1
+  },
+  "Recipe": {
+    "TimeSeconds": 3,
+    "KnowledgeRequired": false,
+    "Input": [
+      {
+        "ItemId": "Ingredient_Scraps",
+        "Quantity": 10
+      },
+      {
+        "ItemId": "Ingredient_Crystal_Void",
+        "Quantity": 2
+      },
+      {
+        "ItemId": "Ingredient_Rune_Shard",
+        "Quantity": 1
+      }
+    ],
+    "BenchRequirement": [
+      {
+        "Id": "GoblinLab_Workbench",
+        "Type": "Crafting",
+        "Categories": [
+          "GoblinLab_Gadgets"
+        ],
+        "RequiredAugmentTags": [
+          "goblin_lab_power"
+        ]
+      }
+    ]
+  },
+  "Tags": {
+    "Type": [
+      "Utility"
+    ]
+  },
+  "Interactions": {
+    "Secondary": {
+      "Interactions": [
+        {
+          "Type": "MagicLedgerOpen"
+        }
+      ]
+    }
+  },
+  "ItemSoundSetId": "ISS_Weapons_Books"
+}

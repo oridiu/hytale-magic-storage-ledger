@@ -1,0 +1,41 @@
+$C = "../Common.ui";
+
+$C.@PageOverlay {}
+
+$C.@DecoratedContainer {
+  Anchor: (Width: 600, Height: 480);
+
+  #Title {
+    Group {
+      $C.@Title {
+        @Text = %server.magicledger.ui.ledgerTitle;
+      }
+    }
+  }
+
+  #Content {
+    Group {
+      LayoutMode: Left;
+      Padding: (Right: 15, Bottom: 5);
+
+      Label {
+        FlexWeight: 1;
+        Text: %server.magicledger.ui.item;
+        Style: (RenderBold: true);
+      }
+
+      Label {
+        Text: %server.magicledger.ui.count;
+        Style: (RenderBold: true);
+      }
+    }
+
+    Group #ElementList {
+      FlexWeight: 1;
+      LayoutMode: TopScrolling;
+      ScrollbarStyle: $C.@DefaultScrollbarStyle;
+    }
+  }
+}
+
+$C.@BackButton {}

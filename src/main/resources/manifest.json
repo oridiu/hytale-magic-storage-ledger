@@ -1,0 +1,18 @@
+{
+    "Group": "oridiu",
+    "Name": "MagicStorageLedger",
+    "Version": "1.0.0",
+    "Description": "Magic Storage Ledger: a magic book that lists what the chests nearby hold and shows you the way to the item you pick.",
+    "Authors": [
+        {
+            "Name": "oridiu"
+        }
+    ],
+    "Website": "https://github.com/oridiu/hytale-magic-storage-ledger",
+    "ServerVersion": "^0.7.4",
+    "Dependencies": {},
+    "OptionalDependencies": {},
+    "DisabledByDefault": false,
+    "Main": "io.github.oridiu.magicledger.MagicLedgerPlugin",
+    "IncludesAssetPack": true
+}

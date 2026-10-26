@@ -1,0 +1,144 @@
+name: Build
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+    inputs:
+      curseforge_tag:
+        description: 'Upload the jar of an existing release to CurseForge, e.g. v1.0.0'
+        type: string
+        default: ''
+
+permissions:
+  contents: read
+
+jobs:
+  # Keeps a release pull request open that bumps the version and updates
+  # CHANGELOG.md from Conventional Commits. Merging that pull request creates
+  # the tag and the GitHub release; the jobs below then attach the jar and
+  # upload it to CurseForge.
+  release-please:
+    if: github.event_name == 'push'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    outputs:
+      release_created: ${{ steps.release.outputs.release_created }}
+      tag_name: ${{ steps.release.outputs.tag_name }}
+    steps:
+      - id: release
+        uses: googleapis/release-please-action@v4
+        with:
+          config-file: release-please-config.json
+          manifest-file: .release-please-manifest.json
+
+  # release-please builds the changelog from commit messages, and pull
+  # requests are squash merged, so the title must be a Conventional Commit.
+  pr-title:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: read
+    steps:
+      - uses: amannn/action-semantic-pull-request@v5
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: '25'
+
+      - uses: gradle/actions/setup-gradle@v5
+
+      # No local Hytale install on the runner, so the build compiles against
+      # com.hypixel.hytale:Server from maven.hytale.com (hytale_build).
+      - name: Build plugin jar
+        run: ./gradlew build --no-daemon
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: MagicStorageLedger
+          path: build/libs/*.jar
+          if-no-files-found: error
+
+  release:
+    if: needs.release-please.outputs.release_created == 'true'
+    needs: [release-please, build]
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    env:
+      TAG: ${{ needs.release-please.outputs.tag_name }}
+    steps:
+      - uses: actions/checkout@v5
+
+      # release-please bumps gradle.properties in the release pull request,
+      # so the tag always matches; this only guards against manual edits.
+      - name: Check tag against version
+        run: |
+          version=$(grep '^version=' gradle.properties | cut -d= -f2)
+          if [ "${TAG}" != "v${version}" ]; then
+            echo "::error::Tag ${TAG} does not match version ${version} in gradle.properties"
+            exit 1
+          fi
+
+      - uses: actions/download-artifact@v4
+        with:
+          name: MagicStorageLedger
+          path: dist
+
+      - name: Attach jar to release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh release upload "$TAG" dist/*.jar --clobber
+
+  # Uploads the released jar to CurseForge, after a release or by hand for
+  # an existing one. Needs the secrets CURSEFORGE_TOKEN and
+  # CURSEFORGE_PROJECT_ID; skipped without them. Optional repository
+  # variable: CURSEFORGE_RELEASE_TYPE (alpha, beta or release; default beta).
+  curseforge:
+    if: >-
+      always() && (needs.release-please.outputs.release_created == 'true' ||
+      (github.event_name == 'workflow_dispatch' && inputs.curseforge_tag != ''))
+    needs: [release-please, release]
+    runs-on: ubuntu-latest
+    env:
+      TAG: ${{ needs.release-please.outputs.tag_name || inputs.curseforge_tag }}
+      HAS_TOKEN: ${{ secrets.CURSEFORGE_TOKEN != '' && secrets.CURSEFORGE_PROJECT_ID != '' }}
+    steps:
+      # CurseForge's API has no Hytale game versions yet (any game version
+      # is rejected as belonging to another game), so the file is uploaded
+      # without one. hytale.curseforge.com is only the landing page.
+      - name: Upload to CurseForge
+        if: env.HAS_TOKEN == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          CF_TOKEN: ${{ secrets.CURSEFORGE_TOKEN }}
+          CF_PROJECT_ID: ${{ secrets.CURSEFORGE_PROJECT_ID }}
+          CF_RELEASE_TYPE: ${{ vars.CURSEFORGE_RELEASE_TYPE || 'beta' }}
+        run: |
+          gh release download "$TAG" --repo "$GITHUB_REPOSITORY" --pattern '*.jar' --dir dist
+          gh release view "$TAG" --repo "$GITHUB_REPOSITORY" --json body --jq .body > changelog.md
+          jq -n --rawfile changelog changelog.md --arg name "MagicStorageLedger ${TAG#v}" --arg type "$CF_RELEASE_TYPE" \
+            '{changelog: $changelog, changelogType: "markdown", displayName: $name, releaseType: $type}' > metadata.json
+          status=$(curl -sS -o response.json -w '%{http_code}' -H "X-Api-Token: ${CF_TOKEN}" \
+            -F "metadata=<metadata.json" -F "file=@$(ls dist/*.jar | head -n 1)" \
+            "https://www.curseforge.com/api/projects/${CF_PROJECT_ID}/upload-file")
+          cat response.json; echo
+          if [[ "$status" -lt 200 || "$status" -ge 300 ]]; then
+            echo "::error::CurseForge upload failed with HTTP ${status}."
+            exit 1
+          fi
+
+      - name: Skip without CurseForge secrets
+        if: env.HAS_TOKEN != 'true'
+        run: echo "::notice::CURSEFORGE_TOKEN or CURSEFORGE_PROJECT_ID not set, skipping CurseForge."

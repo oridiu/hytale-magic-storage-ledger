@@ -1,0 +1,21 @@
+items.Magic_Ledger.name = Magisches Register
+items.Magic_Ledger.description = <i>Ein magisches Register, das weiß, was in deinen Truhen liegt. Geh zu deinen Truhen und schlag es auf: Es listet alles auf, was darin liegt. Wähle einen Gegenstand, und ein glitzernder Nebel zeigt dir den Weg zu jeder Truhe, die ihn enthält.</i>
+
+magicledger.ui.ledgerTitle = Magisches Register
+magicledger.ui.item = Gegenstand in Truhen in der Nähe
+magicledger.ui.count = Anzahl
+magicledger.ui.noItems = Das Register bleibt leer: Die Truhen in der Nähe sind leer, oder keine ist in Reichweite.
+magicledger.ui.settingsTitle = Einstellungen: Magisches Register
+magicledger.ui.horizontalRadius = Suchradius seitlich (Blöcke)
+magicledger.ui.verticalRadius = Suchradius nach oben und unten (Blöcke)
+magicledger.ui.radiusHint = 0 nutzt die Reichweite, in der Werkbänke Truhen finden (14 seitlich, 6 nach oben und unten).
+
+magicledger.trace.none = Keine Truhe in der Nähe enthält diesen Gegenstand mehr.
+magicledger.trace.found = {count} Truhe(n) in der Nähe enthalten diesen Gegenstand.
+
+magicledger.settings.saved = Einstellungen des Magischen Registers gespeichert.
+magicledger.settings.show = Suchradius des Magischen Registers: {horizontal} seitlich, {vertical} nach oben und unten (0 = Werkbank-Reichweite).
+
+magicledger.commands.desc = Einstellungen des Magischen Registers
+magicledger.commands.settings.desc = Öffnet das Einstellungsfenster
+magicledger.commands.show.desc = Zeigt die aktuellen Einstellungen

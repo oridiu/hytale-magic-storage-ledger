@@ -1,0 +1,89 @@
+{
+  "$Comment": "Small twinkling stars all around the chest's block, after the vanilla treasure glitter. White, so the colour sent from code shows unchanged.",
+  "RenderMode": "BlendAdd",
+  "Shape": "Cube",
+  "EmitOffset": {
+    "X": {
+      "Max": 0.65
+    },
+    "Y": {
+      "Max": 0.65
+    },
+    "Z": {
+      "Max": 0.65
+    }
+  },
+  "ParticleRotationInfluence": "Billboard",
+  "LinearFiltering": true,
+  "LightInfluence": 0.0,
+  "ParticleRotateWithSpawner": false,
+  "MaxConcurrentParticles": 14,
+  "ParticleLifeSpan": {
+    "Min": 0.4,
+    "Max": 0.8
+  },
+  "SpawnRate": {
+    "Min": 10.0,
+    "Max": 14.0
+  },
+  "InitialVelocity": {
+    "Speed": {
+      "Min": 0.05,
+      "Max": 0.1
+    },
+    "Pitch": {
+      "Min": 90.0,
+      "Max": 90.0
+    }
+  },
+  "Particle": {
+    "Texture": "Particles/Textures/Basic/Star2.png",
+    "ScaleRatioConstraint": "OneToOne",
+    "Animation": {
+      "0": {
+        "Opacity": 0.0,
+        "Color": "#ffffff",
+        "Scale": {
+          "X": {
+            "Min": 1.0,
+            "Max": 1.0
+          }
+        }
+      },
+      "30": {
+        "Opacity": 1.0,
+        "Scale": {
+          "X": {
+            "Min": 3.0,
+            "Max": 2.5
+          }
+        }
+      },
+      "100": {
+        "Opacity": 0.0,
+        "Color": "#ffffff",
+        "Scale": {
+          "X": {
+            "Min": 0.5,
+            "Max": 1.0
+          }
+        }
+      }
+    },
+    "InitialAnimationFrame": {
+      "Scale": {
+        "X": {
+          "Min": 0.02,
+          "Max": 0.05
+        }
+      },
+      "Opacity": 1.0,
+      "Rotation": {
+        "Z": {
+          "Max": 360
+        }
+      }
+    }
+  },
+  "CameraOffset": 0.2
+}

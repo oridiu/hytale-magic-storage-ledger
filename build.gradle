@@ -1,0 +1,123 @@
+plugins {
+    id 'java'
+    id 'org.jetbrains.gradle.plugin.idea-ext' version '1.3'
+}
+
+import org.gradle.internal.os.OperatingSystem
+
+// Locates the Hytale install. Override with -Phytale_home=... or HYTALE_HOME.
+ext {
+    if (project.hasProperty('hytale_home')) {
+        hytaleHome = project.findProperty('hytale_home')
+    } else if (System.getenv('HYTALE_HOME')) {
+        hytaleHome = System.getenv('HYTALE_HOME')
+    } else {
+        def os = OperatingSystem.current()
+        if (os.isWindows()) {
+            hytaleHome = "${System.getProperty("user.home")}/AppData/Roaming/Hytale"
+        } else if (os.isMacOsX()) {
+            hytaleHome = "${System.getProperty("user.home")}/Library/Application Support/Hytale"
+        } else {
+            hytaleHome = "${System.getProperty("user.home")}/.var/app/com.hypixel.HytaleLauncher/data/Hytale"
+        }
+    }
+}
+
+def gameDir = "$hytaleHome/install/$patchline/package/game/latest"
+def serverJar = file("$gameDir/Server/HytaleServer.jar")
+def assetsZip = file("$gameDir/Assets.zip")
+def hasLocalServer = serverJar.exists()
+if (!hasLocalServer) {
+    logger.lifecycle("HytaleServer.jar not found at ${serverJar}; falling back to maven build ${hytale_build}. Set -Phytale_home=... to use a local install.")
+}
+
+java {
+    toolchain.languageVersion = JavaLanguageVersion.of(java_version)
+}
+
+repositories {
+    mavenCentral()
+    maven {
+        name = "hytale-release"
+        url = uri("https://maven.hytale.com/release")
+    }
+}
+
+// Source set used only to run the dev server: the plugin classes plus the
+// server jar on one classpath.
+sourceSets {
+    dev {
+        runtimeClasspath += main.output
+    }
+}
+
+// Compile against the server jar of the installed game, so the API always
+// matches the version you actually play. The jar is never bundled.
+dependencies {
+    if (hasLocalServer) {
+        compileOnly(files(serverJar))
+        devRuntimeOnly(files(serverJar))
+        testImplementation(files(serverJar))
+    } else {
+        compileOnly("com.hypixel.hytale:Server:$hytale_build")
+        testImplementation("com.hypixel.hytale:Server:$hytale_build")
+    }
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.11.4'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher:1.11.4'
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}
+
+// Writes Version and IncludesAssetPack from gradle.properties into the
+// manifest.json that goes into the jar. The source file stays untouched.
+tasks.named('processResources') {
+    inputs.property('version', version)
+    inputs.property('includes_pack', includes_pack)
+    doLast {
+        def manifestFile = new File(destinationDir, 'manifest.json')
+        def manifestJson = new groovy.json.JsonSlurper().parseText(manifestFile.text)
+        manifestJson.Version = version
+        manifestJson.IncludesAssetPack = includes_pack.toBoolean()
+        manifestFile.text = groovy.json.JsonOutput.prettyPrint(groovy.json.JsonOutput.toJson(manifestJson)) + "\n"
+    }
+}
+
+if (hasLocalServer) {
+    def serverRunDir = file("$projectDir/run")
+    serverRunDir.mkdirs()
+
+    // --mods only takes directories. The plugin and its asset pack are
+    // loaded from the dev classpath (build/resources/main), so asset edits
+    // need a processResources run; the src/main entry is skipped as a duplicate.
+    def modDirs = [file('src/main').absolutePath]
+    if (load_user_mods.toBoolean()) {
+        modDirs << file("${hytaleHome}/UserData/Mods").absolutePath
+    }
+    // The server's console library loads native code; this silences the JDK 25 warning.
+    def serverJvmArgs = ['--enable-native-access=ALL-UNNAMED']
+    def serverArgs = ['--allow-op', '--disable-sentry', "--assets=${assetsZip}", "--mods=${modDirs.join(',')}",
+                      "--bind=0.0.0.0:${server_port}"]
+
+    tasks.register('runServer', JavaExec) {
+        group = 'hytale'
+        description = 'Starts a local dev server with the plugin.'
+        classpath = sourceSets.dev.runtimeClasspath
+        mainClass = 'com.hypixel.hytale.Main'
+        workingDir = serverRunDir
+        jvmArgs = serverJvmArgs
+        standardInput = System.in
+        args = serverArgs
+    }
+
+    idea.project.settings.runConfigurations {
+        'HytaleServer'(org.jetbrains.gradle.ext.Application) {
+            mainClass = 'com.hypixel.hytale.Main'
+            moduleName = project.idea.module.name + '.dev'
+            programParameters = serverArgs.collect { '"' + it + '"' }.join(' ')
+            workingDirectory = serverRunDir.absolutePath
+            jvmArgs = serverJvmArgs.join(' ')
+        }
+    }
+}

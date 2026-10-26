@@ -1,0 +1,84 @@
+{
+  "$Comment": "One puff of the mist wisp that travels from the player to a traced chest; the server spawns a puff a little further along every tenth of a second. White, so the colour sent from code shows unchanged.",
+  "RenderMode": "BlendAdd",
+  "Shape": "Sphere",
+  "EmitOffset": {
+    "X": {
+      "Max": 0.15
+    },
+    "Y": {
+      "Max": 0.15
+    },
+    "Z": {
+      "Max": 0.15
+    }
+  },
+  "ParticleRotationInfluence": "Billboard",
+  "LinearFiltering": true,
+  "LightInfluence": 0.0,
+  "ParticleRotateWithSpawner": false,
+  "MaxConcurrentParticles": 3,
+  "ParticleLifeSpan": {
+    "Min": 0.6,
+    "Max": 0.9
+  },
+  "SpawnRate": {
+    "Min": 10.0,
+    "Max": 10.0
+  },
+  "SpawnBurst": true,
+  "TotalParticles": {
+    "Min": 2,
+    "Max": 3
+  },
+  "InitialVelocity": {
+    "Speed": {
+      "Min": 0.05,
+      "Max": 0.15
+    },
+    "Pitch": {
+      "Min": 90.0,
+      "Max": 90.0
+    }
+  },
+  "Particle": {
+    "Texture": "Particles/Textures/Basic/Glow.png",
+    "ScaleRatioConstraint": "OneToOne",
+    "UVOption": "None",
+    "SoftParticles": "Disable",
+    "Animation": {
+      "0": {
+        "Opacity": 0.0,
+        "Color": "#ffffff",
+        "Scale": {
+          "X": {
+            "Min": 1.0,
+            "Max": 1.0
+          }
+        }
+      },
+      "25": {
+        "Opacity": 0.45
+      },
+      "100": {
+        "Opacity": 0.0,
+        "Color": "#ffffff",
+        "Scale": {
+          "X": {
+            "Min": 1.8,
+            "Max": 1.8
+          }
+        }
+      }
+    },
+    "InitialAnimationFrame": {
+      "Scale": {
+        "X": {
+          "Min": 0.35,
+          "Max": 0.5
+        }
+      },
+      "Opacity": 1.0
+    }
+  }
+}

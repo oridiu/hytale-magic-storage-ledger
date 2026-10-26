@@ -1,0 +1,79 @@
+{
+  "$Comment": "Soft mist filling the block of a chest that holds what the Magic Ledger looks for, a little larger than the block so it shows on every side. White, so the colour sent from code (the item's main colour) shows unchanged.",
+  "RenderMode": "BlendAdd",
+  "Shape": "Cube",
+  "EmitOffset": {
+    "X": {
+      "Max": 0.6
+    },
+    "Y": {
+      "Max": 0.6
+    },
+    "Z": {
+      "Max": 0.6
+    }
+  },
+  "ParticleRotationInfluence": "Billboard",
+  "LinearFiltering": true,
+  "LightInfluence": 0.0,
+  "ParticleRotateWithSpawner": false,
+  "MaxConcurrentParticles": 16,
+  "ParticleLifeSpan": {
+    "Min": 1.5,
+    "Max": 2.5
+  },
+  "SpawnRate": {
+    "Min": 5.0,
+    "Max": 7.0
+  },
+  "InitialVelocity": {
+    "Speed": {
+      "Min": 0.05,
+      "Max": 0.15
+    },
+    "Pitch": {
+      "Min": 90.0,
+      "Max": 90.0
+    }
+  },
+  "Particle": {
+    "Texture": "Particles/Textures/Basic/Glow.png",
+    "ScaleRatioConstraint": "OneToOne",
+    "UVOption": "None",
+    "SoftParticles": "Disable",
+    "Animation": {
+      "0": {
+        "Opacity": 0.0,
+        "Color": "#ffffff",
+        "Scale": {
+          "X": {
+            "Min": 1.0,
+            "Max": 1.0
+          }
+        }
+      },
+      "40": {
+        "Opacity": 0.3
+      },
+      "100": {
+        "Opacity": 0.0,
+        "Color": "#ffffff",
+        "Scale": {
+          "X": {
+            "Min": 1.6,
+            "Max": 1.6
+          }
+        }
+      }
+    },
+    "InitialAnimationFrame": {
+      "Scale": {
+        "X": {
+          "Min": 0.5,
+          "Max": 0.8
+        }
+      },
+      "Opacity": 1.0
+    }
+  }
+}

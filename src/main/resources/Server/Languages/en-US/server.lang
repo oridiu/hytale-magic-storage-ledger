@@ -1,0 +1,21 @@
+items.Magic_Ledger.name = Magic Ledger
+items.Magic_Ledger.description = <i>A magic register that knows what your chests hold. Come close to your chests and open it: it lists everything inside. Pick an item, and a glittering mist shows you the way to every chest that holds it.</i>
+
+magicledger.ui.ledgerTitle = Magic Ledger
+magicledger.ui.item = Item in nearby chests
+magicledger.ui.count = Count
+magicledger.ui.noItems = The ledger stays blank: the chests nearby are empty, or there are none in range.
+magicledger.ui.settingsTitle = Magic Ledger Settings
+magicledger.ui.horizontalRadius = Search radius sideways (blocks)
+magicledger.ui.verticalRadius = Search radius up and down (blocks)
+magicledger.ui.radiusHint = 0 uses the range in which workbenches find chests (14 sideways, 6 up and down).
+
+magicledger.trace.none = No chest nearby holds that item any more.
+magicledger.trace.found = {count} chest(s) nearby hold that item.
+
+magicledger.settings.saved = Magic Ledger settings saved.
+magicledger.settings.show = Magic Ledger search radius: {horizontal} sideways, {vertical} up and down (0 = workbench range).
+
+magicledger.commands.desc = Magic Ledger settings
+magicledger.commands.settings.desc = Opens the settings window
+magicledger.commands.show.desc = Shows the current settings

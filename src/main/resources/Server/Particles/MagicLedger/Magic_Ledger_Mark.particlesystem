@@ -1,0 +1,11 @@
+{
+  "Spawners": [
+    {
+      "SpawnerId": "Magic_Ledger_Mist"
+    },
+    {
+      "SpawnerId": "Magic_Ledger_Glitter"
+    }
+  ],
+  "CullDistance": 64.0
+}
