@@ -23,11 +23,14 @@ import javax.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
+import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * The Magic Ledger's window: every item in the chests nearby with its total
  * count, laid out like the repair kit's window, sorted by name from A. Clicking
- * a column heading sorts by that column, clicking it again flips the order.
+ * a column heading sorts by that column, clicking it again flips the order;
+ * the ledger reopens with the player's last sort.
  * Clicking an item marks the chests that hold it. With the Ledger Upgrade a
  * further column shows how many of each item the player carries.
  */
@@ -44,12 +47,18 @@ public class LedgerPage extends ChoiceBasePage {
     private static final String[] HEADINGS = {"#SortName", "#SortCount", "#SortCarried"};
     private static final String[] HEADING_KEYS = {"server.magicledger.ui.item", "server.magicledger.ui.count", "server.magicledger.ui.carried"};
 
+    /** Each player's last sort, so the ledger reopens the way it was left; kept until the server restarts. */
+    private static final Map<UUID, Sort> LAST_SORT = new ConcurrentHashMap<>();
+
+    private record Sort(@Nonnull LedgerSort.Column column, boolean ascending) {
+    }
+
     /** Whether the carried column is shown: only for players with the Ledger Upgrade. */
     private final boolean showCarried;
     private final List<LedgerSort.Row> rows;
     private List<LedgerSort.Row> shown;
-    private LedgerSort.Column column = LedgerSort.Column.NAME;
-    private boolean ascending = true;
+    private LedgerSort.Column column;
+    private boolean ascending;
 
     /**
      * @param carried how many of each item the player carries, or null
@@ -59,6 +68,11 @@ public class LedgerPage extends ChoiceBasePage {
         super(playerRef, null, LAYOUT);
         this.showCarried = carried != null;
         this.rows = rowsFor(chests, carried, playerRef.getLanguage());
+        Sort last = LAST_SORT.getOrDefault(playerRef.getUuid(), new Sort(LedgerSort.Column.NAME, true));
+        // Without the upgrade there is no carried column to sort by.
+        boolean usable = showCarried || last.column() != LedgerSort.Column.CARRIED;
+        this.column = usable ? last.column() : LedgerSort.Column.NAME;
+        this.ascending = usable ? last.ascending() : true;
         this.shown = LedgerSort.sorted(rows, column, ascending);
     }
 
@@ -118,6 +132,7 @@ public class LedgerPage extends ChoiceBasePage {
             LedgerSort.Column clicked = columns[-1 - index];
             ascending = LedgerSort.ascendingAfterClick(column, ascending, clicked);
             column = clicked;
+            LAST_SORT.put(playerRef.getUuid(), new Sort(column, ascending));
             shown = LedgerSort.sorted(rows, column, ascending);
             rebuild();
         } else if (index >= 0 && index < shown.size()) {
