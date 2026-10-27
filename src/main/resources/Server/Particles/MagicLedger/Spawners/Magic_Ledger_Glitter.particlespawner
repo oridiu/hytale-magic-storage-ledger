@@ -1,39 +1,43 @@
 {
-  "$Comment": "Small twinkling stars all around the chest's block, after the vanilla treasure glitter. White, so the colour sent from code shows unchanged.",
+  "$Comment": "Restrained pinpricks at the chest's corners. Color stays unset to inherit the item's runtime tint.",
   "RenderMode": "BlendAdd",
   "Shape": "Cube",
   "EmitOffset": {
     "X": {
-      "Max": 0.65
+      "Min": 0.46,
+      "Max": 0.55
     },
     "Y": {
-      "Max": 0.65
+      "Min": 0.3,
+      "Max": 0.42
     },
     "Z": {
-      "Max": 0.65
+      "Min": 0.46,
+      "Max": 0.55
     }
   },
   "ParticleRotationInfluence": "Billboard",
   "LinearFiltering": true,
-  "LightInfluence": 0.0,
+  "LightInfluence": 0,
   "ParticleRotateWithSpawner": false,
-  "MaxConcurrentParticles": 14,
+  "LifeSpan": 9.2,
+  "MaxConcurrentParticles": 8,
   "ParticleLifeSpan": {
     "Min": 0.4,
     "Max": 0.8
   },
   "SpawnRate": {
-    "Min": 10.0,
-    "Max": 14.0
+    "Min": 6,
+    "Max": 8
   },
   "InitialVelocity": {
     "Speed": {
-      "Min": 0.05,
-      "Max": 0.1
+      "Min": 0.02,
+      "Max": 0.05
     },
     "Pitch": {
-      "Min": 90.0,
-      "Max": 90.0
+      "Min": 90,
+      "Max": 90
     }
   },
   "Particle": {
@@ -41,31 +45,38 @@
     "ScaleRatioConstraint": "OneToOne",
     "Animation": {
       "0": {
-        "Opacity": 0.0,
-        "Color": "#ffffff",
+        "Opacity": 0,
         "Scale": {
           "X": {
-            "Min": 1.0,
-            "Max": 1.0
+            "Min": 0.5,
+            "Max": 0.5
           }
         }
       },
-      "30": {
-        "Opacity": 1.0,
+      "20": {
+        "Opacity": 0.85,
         "Scale": {
           "X": {
-            "Min": 3.0,
-            "Max": 2.5
+            "Min": 1.8,
+            "Max": 2.2
+          }
+        }
+      },
+      "65": {
+        "Opacity": 0.25,
+        "Scale": {
+          "X": {
+            "Min": 0.7,
+            "Max": 0.9
           }
         }
       },
       "100": {
-        "Opacity": 0.0,
-        "Color": "#ffffff",
+        "Opacity": 0,
         "Scale": {
           "X": {
-            "Min": 0.5,
-            "Max": 1.0
+            "Min": 0.2,
+            "Max": 0.4
           }
         }
       }
@@ -73,17 +84,16 @@
     "InitialAnimationFrame": {
       "Scale": {
         "X": {
-          "Min": 0.02,
-          "Max": 0.05
+          "Min": 0.016,
+          "Max": 0.028
         }
       },
-      "Opacity": 1.0,
+      "Opacity": 1,
       "Rotation": {
         "Z": {
           "Max": 360
         }
       }
     }
-  },
-  "CameraOffset": 0.2
+  }
 }

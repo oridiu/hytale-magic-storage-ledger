@@ -1,79 +1,104 @@
 {
-  "$Comment": "Soft mist filling the block of a chest that holds what the Magic Ledger looks for, a little larger than the block so it shows on every side. White, so the colour sent from code (the item's main colour) shows unchanged.",
-  "RenderMode": "BlendAdd",
+  "$Comment": "A thin veil on one chest face. Leave every Color unset: explicit white overrides the item's runtime tint. Spawning stops early so the last clouds fade by ten seconds.",
+  "RenderMode": "BlendLinear",
   "Shape": "Cube",
   "EmitOffset": {
     "X": {
-      "Max": 0.6
+      "Max": 0.45
     },
     "Y": {
-      "Max": 0.6
+      "Max": 0.4
     },
     "Z": {
-      "Max": 0.6
+      "Max": 0.03
     }
   },
   "ParticleRotationInfluence": "Billboard",
   "LinearFiltering": true,
-  "LightInfluence": 0.0,
+  "LightInfluence": 0,
   "ParticleRotateWithSpawner": false,
-  "MaxConcurrentParticles": 16,
+  "LifeSpan": 8.6,
+  "MaxConcurrentParticles": 3,
   "ParticleLifeSpan": {
-    "Min": 1.5,
-    "Max": 2.5
+    "Min": 1,
+    "Max": 1.4
   },
   "SpawnRate": {
-    "Min": 5.0,
-    "Max": 7.0
+    "Min": 1,
+    "Max": 1.4
   },
   "InitialVelocity": {
     "Speed": {
-      "Min": 0.05,
-      "Max": 0.15
+      "Min": 0.025,
+      "Max": 0.06
     },
     "Pitch": {
-      "Min": 90.0,
-      "Max": 90.0
+      "Min": 75,
+      "Max": 90
+    },
+    "Yaw": {
+      "Max": 360
     }
   },
   "Particle": {
-    "Texture": "Particles/Textures/Basic/Glow.png",
+    "Texture": "Particles/Textures/Smoke/Smoke_Smooth2.png",
+    "FrameSize": {
+      "Width": 64,
+      "Height": 64
+    },
     "ScaleRatioConstraint": "OneToOne",
-    "UVOption": "None",
-    "SoftParticles": "Disable",
+    "UVOption": "RandomFlipU",
+    "SoftParticles": "Enable",
+    "SoftParticlesFadeFactor": 2,
     "Animation": {
       "0": {
-        "Opacity": 0.0,
-        "Color": "#ffffff",
+        "Opacity": 0,
         "Scale": {
           "X": {
-            "Min": 1.0,
-            "Max": 1.0
+            "Min": 0.8,
+            "Max": 0.8
           }
         }
       },
-      "40": {
-        "Opacity": 0.3
+      "20": {
+        "Opacity": 0.32
+      },
+      "55": {
+        "Opacity": 0.22
       },
       "100": {
-        "Opacity": 0.0,
-        "Color": "#ffffff",
+        "Opacity": 0,
         "Scale": {
           "X": {
-            "Min": 1.6,
-            "Max": 1.6
+            "Min": 1.3,
+            "Max": 1.3
+          }
+        },
+        "Rotation": {
+          "Z": {
+            "Min": -25,
+            "Max": 25
           }
         }
       }
     },
     "InitialAnimationFrame": {
+      "FrameIndex": {
+        "Min": 0,
+        "Max": 3
+      },
       "Scale": {
         "X": {
-          "Min": 0.5,
-          "Max": 0.8
+          "Min": 0.34,
+          "Max": 0.46
         }
       },
-      "Opacity": 1.0
+      "Opacity": 1,
+      "Rotation": {
+        "Z": {
+          "Max": 360
+        }
+      }
     }
   }
 }

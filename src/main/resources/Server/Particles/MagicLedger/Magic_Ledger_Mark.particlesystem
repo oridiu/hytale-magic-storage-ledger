@@ -1,11 +1,57 @@
 {
+  "$Comment": "Six thin mist faces keep the chest readable in a stack; each occupied cell of a large chest gets the same shell.",
   "Spawners": [
     {
-      "SpawnerId": "Magic_Ledger_Mist"
+      "SpawnerId": "Magic_Ledger_Mist",
+      "PositionOffset": {
+        "Z": 0.53
+      }
+    },
+    {
+      "SpawnerId": "Magic_Ledger_Mist",
+      "PositionOffset": {
+        "Z": -0.53
+      }
+    },
+    {
+      "SpawnerId": "Magic_Ledger_Mist",
+      "PositionOffset": {
+        "X": 0.53
+      },
+      "RotationOffset": {
+        "Yaw": 90
+      }
+    },
+    {
+      "SpawnerId": "Magic_Ledger_Mist",
+      "PositionOffset": {
+        "X": -0.53
+      },
+      "RotationOffset": {
+        "Yaw": 90
+      }
+    },
+    {
+      "SpawnerId": "Magic_Ledger_Mist",
+      "PositionOffset": {
+        "Y": 0.53
+      },
+      "RotationOffset": {
+        "Pitch": 90
+      }
+    },
+    {
+      "SpawnerId": "Magic_Ledger_Mist",
+      "PositionOffset": {
+        "Y": -0.53
+      },
+      "RotationOffset": {
+        "Pitch": 90
+      }
     },
     {
       "SpawnerId": "Magic_Ledger_Glitter"
     }
   ],
-  "CullDistance": 64.0
+  "CullDistance": 64
 }

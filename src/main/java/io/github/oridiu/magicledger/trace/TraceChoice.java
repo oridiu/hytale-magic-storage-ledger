@@ -29,7 +29,6 @@ import java.util.List;
 public class TraceChoice extends ChoiceInteraction {
 
     private static final String TRACE_SYSTEM = "Magic_Ledger_Mark";
-    private static final float DURATION_SECONDS = 10.0F;
 
     private final String itemId;
 
@@ -59,7 +58,7 @@ public class TraceChoice extends ChoiceInteraction {
         for (NearbyChests.Chest chest : chests) {
             for (Vector3d cell : chest.cells()) {
                 ParticleUtil.spawnParticleEffect(
-                        TRACE_SYSTEM, cell.x, cell.y, cell.z, 0.0F, 0.0F, 0.0F, 1.0F, color, null, List.of(ref), store, DURATION_SECONDS);
+                        TRACE_SYSTEM, cell.x, cell.y, cell.z, 0.0F, 0.0F, 0.0F, 1.0F, color, null, List.of(ref), store, WispSystem.TRACE_SECONDS);
             }
         }
         WispSystem.start(world.getName(), ref, transform.getPosition(),
