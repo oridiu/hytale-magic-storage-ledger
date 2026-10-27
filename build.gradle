@@ -68,6 +68,7 @@ dependencies {
 
 tasks.named('test') {
     useJUnitPlatform()
+    systemProperty 'java.util.logging.manager', 'com.hypixel.hytale.logger.backend.HytaleLogManager'
 }
 
 // Writes Version and IncludesAssetPack from gradle.properties into the

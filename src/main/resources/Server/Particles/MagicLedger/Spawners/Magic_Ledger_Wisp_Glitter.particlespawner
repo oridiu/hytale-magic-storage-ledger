@@ -1,66 +1,66 @@
 {
-  "$Comment": "A star or two twinkling in each puff of the wisp. White, so the colour sent from code shows unchanged.",
+  "$Comment": "A fleeting point of light inside each mist sample, in the item's runtime tint. Color must stay unset.",
   "RenderMode": "BlendAdd",
   "Shape": "Sphere",
   "EmitOffset": {
     "X": {
-      "Max": 0.25
+      "Max": 0.08
     },
     "Y": {
-      "Max": 0.25
+      "Max": 0.08
     },
     "Z": {
-      "Max": 0.25
+      "Max": 0.08
     }
   },
   "ParticleRotationInfluence": "Billboard",
   "LinearFiltering": true,
-  "LightInfluence": 0.0,
+  "LightInfluence": 0,
   "ParticleRotateWithSpawner": false,
-  "MaxConcurrentParticles": 2,
+  "MaxConcurrentParticles": 1,
   "ParticleLifeSpan": {
-    "Min": 0.3,
-    "Max": 0.6
+    "Min": 0.22,
+    "Max": 0.38
   },
   "SpawnRate": {
-    "Min": 10.0,
-    "Max": 10.0
+    "Min": 1,
+    "Max": 1
   },
   "SpawnBurst": true,
   "TotalParticles": {
     "Min": 1,
-    "Max": 2
+    "Max": 1
   },
   "Particle": {
     "Texture": "Particles/Textures/Basic/Star2.png",
     "ScaleRatioConstraint": "OneToOne",
+    "CameraNearFadeStartDistance": 0.4,
+    "CameraNearFadeEndDistance": 0.9,
     "Animation": {
       "0": {
-        "Opacity": 0.0,
-        "Color": "#ffffff",
+        "Opacity": 0,
         "Scale": {
           "X": {
-            "Min": 1.0,
-            "Max": 1.0
+            "Min": 0.5,
+            "Max": 0.5
           }
         }
       },
-      "30": {
-        "Opacity": 1.0,
+      "20": {
+        "Opacity": 0.8,
         "Scale": {
           "X": {
-            "Min": 3.0,
-            "Max": 2.5
+            "Min": 1.6,
+            "Max": 1.8
           }
         }
       },
       "100": {
-        "Opacity": 0.0,
-        "Color": "#ffffff",
+        "Opacity": 0,
         "Scale": {
           "X": {
-            "Min": 0.5,
-            "Max": 1.0
+            "Min": 0.2,
+            "Max": 0.3
           }
         }
       }
@@ -68,17 +68,16 @@
     "InitialAnimationFrame": {
       "Scale": {
         "X": {
-          "Min": 0.02,
-          "Max": 0.05
+          "Min": 0.012,
+          "Max": 0.02
         }
       },
-      "Opacity": 1.0,
+      "Opacity": 1,
       "Rotation": {
         "Z": {
           "Max": 360
         }
       }
     }
-  },
-  "CameraOffset": 0.2
+  }
 }
