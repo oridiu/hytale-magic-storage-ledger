@@ -11,7 +11,7 @@ It belongs to the same family as [Magic Storage](https://github.com/oridiu/hytal
 ## Features
 
 - **The book:** a teal and gold grimoire with its own model, texture and icon. You carry it like a spellbook; when you open it, you hold it open in both hands and read.
-- **Crafting:** the Magic Ledger is crafted at the Goblin Tinkerer's Workbench in the Forgotten Temple, under **Gadgets**, from 10 Scraps, 2 Void Crystal Shards and 1 Runestone Shard. The workbench must be powered.
+- **Crafting:** the Magic Ledger is crafted at the Arcanist's Workbench, under **Misc**, from 10 Linen Scraps, 2 Void Crystal Shards and 1 Runestone Shard.
 - **What is nearby:** walk up to your chests and right-click with the ledger. A window like the repair kit's lists every item in the chests around you, with how many of it they hold together, most first. Right-click again to close it.
 - **Where it is:** click an item. Every chest nearby that holds it gets a thin veil of mist and small twinkling sparks in the item's colour for ten seconds, on all six sides, so it stands out even in a stack. A large chest is marked over both halves. Softly curling wisps lead you to the five nearest of these chests and taper away on arrival. Further wisps leave your current position every few seconds while there is time to reach the chest before the mark fades. Only you see these effects. The tint comes from the item's block texture or icon; naturally grey items stay pale, and an unavailable colour falls back to violet.
 - **Range:** by default the ledger searches as far as workbenches reach for materials: 14 blocks sideways and 6 up and down. Any chest that stores items counts: small, large, vanilla or modded.

@@ -35,7 +35,7 @@
     "KnowledgeRequired": false,
     "Input": [
       {
-        "ItemId": "Ingredient_Scraps",
+        "ItemId": "Ingredient_Fabric_Scrap_Linen",
         "Quantity": 10
       },
       {
@@ -49,13 +49,10 @@
     ],
     "BenchRequirement": [
       {
-        "Id": "GoblinLab_Workbench",
+        "Id": "Arcanebench",
         "Type": "Crafting",
         "Categories": [
-          "GoblinLab_Gadgets"
-        ],
-        "RequiredAugmentTags": [
-          "goblin_lab_power"
+          "Arcane_Misc"
         ]
       }
     ]
