@@ -24,10 +24,30 @@ $C.@DecoratedContainer {
         Style: (Hovered: (Background: #000000(0.2)));
 
         Label #Label {
-          FlexWeight: 1;
-          Padding: (Right: 10, Vertical: 3);
+          Padding: (Right: 4, Vertical: 3);
           Text: %server.magicledger.ui.item;
           Style: (RenderBold: true);
+        }
+
+        Group #Arrow {
+          Anchor: (Width: 14);
+          LayoutMode: Middle;
+
+          Group #Up {
+            Anchor: (Width: 12, Height: 12);
+            Background: (TexturePath: "MagicLedgerSortUp.png");
+            Visible: false;
+          }
+
+          Group #Down {
+            Anchor: (Width: 12, Height: 12);
+            Background: (TexturePath: "MagicLedgerSortDown.png");
+            Visible: false;
+          }
+        }
+
+        Group {
+          FlexWeight: 1;
         }
       }
 
@@ -38,9 +58,26 @@ $C.@DecoratedContainer {
 
         Label #Label {
           FlexWeight: 1;
-          Padding: (Horizontal: 10, Vertical: 3);
+          Padding: (Left: 10, Vertical: 3);
           Text: %server.magicledger.ui.count;
           Style: (RenderBold: true, HorizontalAlignment: End);
+        }
+
+        Group #Arrow {
+          Anchor: (Width: 14);
+          LayoutMode: Middle;
+
+          Group #Up {
+            Anchor: (Width: 12, Height: 12);
+            Background: (TexturePath: "MagicLedgerSortUp.png");
+            Visible: false;
+          }
+
+          Group #Down {
+            Anchor: (Width: 12, Height: 12);
+            Background: (TexturePath: "MagicLedgerSortDown.png");
+            Visible: false;
+          }
         }
       }
 
@@ -52,9 +89,26 @@ $C.@DecoratedContainer {
 
         Label #Label {
           FlexWeight: 1;
-          Padding: (Horizontal: 10, Vertical: 3);
+          Padding: (Left: 10, Vertical: 3);
           Text: %server.magicledger.ui.carried;
           Style: (RenderBold: true, HorizontalAlignment: End, TextColor: #f2c45a);
+        }
+
+        Group #Arrow {
+          Anchor: (Width: 14);
+          LayoutMode: Middle;
+
+          Group #Up {
+            Anchor: (Width: 12, Height: 12);
+            Background: (TexturePath: "MagicLedgerSortUp.png");
+            Visible: false;
+          }
+
+          Group #Down {
+            Anchor: (Width: 12, Height: 12);
+            Background: (TexturePath: "MagicLedgerSortDown.png");
+            Visible: false;
+          }
         }
       }
     }

@@ -5,7 +5,6 @@ import com.hypixel.hytale.component.Ref;
 import com.hypixel.hytale.component.Store;
 import com.hypixel.hytale.protocol.AnimationSlot;
 import com.hypixel.hytale.protocol.packets.interface_.CustomUIEventBindingType;
-import com.hypixel.hytale.server.core.Message;
 import com.hypixel.hytale.server.core.asset.type.item.config.Item;
 import com.hypixel.hytale.server.core.entity.AnimationUtils;
 import com.hypixel.hytale.server.core.entity.entities.player.pages.choices.ChoiceBasePage;
@@ -45,7 +44,6 @@ public class LedgerPage extends ChoiceBasePage {
 
     /** Headings send negative indices, rows their position from 0. */
     private static final String[] HEADINGS = {"#SortName", "#SortCount", "#SortCarried"};
-    private static final String[] HEADING_KEYS = {"server.magicledger.ui.item", "server.magicledger.ui.count", "server.magicledger.ui.carried"};
 
     /** Each player's last sort, so the ledger reopens the way it was left; kept until the server restarts. */
     private static final Map<UUID, Sort> LAST_SORT = new ConcurrentHashMap<>();
@@ -115,7 +113,7 @@ public class LedgerPage extends ChoiceBasePage {
         for (int i = 0; i < columns.length; i++) {
             eventBuilder.addEventBinding(CustomUIEventBindingType.Activating, HEADINGS[i], EventData.of("Index", Integer.toString(-1 - i)), false);
         }
-        commandBuilder.set(HEADINGS[column.ordinal()] + " #Label.TextSpans", headingText(column, ascending));
+        commandBuilder.set(HEADINGS[column.ordinal()] + (ascending ? " #Up.Visible" : " #Down.Visible"), true);
         commandBuilder.clear("#ElementList");
         for (int i = 0; i < shown.size(); i++) {
             String selector = "#ElementList[" + i + "]";
@@ -138,13 +136,6 @@ public class LedgerPage extends ChoiceBasePage {
         } else if (index >= 0 && index < shown.size()) {
             new TraceChoice(shown.get(index).itemId()).run(store, ref, playerRef);
         }
-    }
-
-    /** The heading of the sorted column with an arrow for the direction, e.g. "Item ▲". */
-    @Nonnull
-    private static Message headingText(@Nonnull LedgerSort.Column column, boolean ascending) {
-        String key = ascending ? "server.magicledger.ui.sortAscending" : "server.magicledger.ui.sortDescending";
-        return Message.translation(key).param("column", Message.translation(HEADING_KEYS[column.ordinal()]));
     }
 
     @Nonnull
