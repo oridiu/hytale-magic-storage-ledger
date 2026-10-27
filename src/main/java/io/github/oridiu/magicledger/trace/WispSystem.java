@@ -29,6 +29,10 @@ public class WispSystem extends TickingSystem<EntityStore> {
     private static final double SPEED = 3.5;
     private static final float LAUNCH_EVERY_SECONDS = 3.0F;
     static final float TRACE_SECONDS = 10.0F;
+    /** Far chests get a faster wisp, so it still arrives within this many seconds. */
+    private static final double MAX_TRAVEL_SECONDS = 4.5;
+    /** How long each puff lingers; the last one must fade before the chest's mark ends. */
+    private static final float PUFF_SECONDS = 0.75F;
     /** Wisps start a bit away from the player, so the first puffs do not cover the view. */
     private static final double START_DISTANCE = 1.2;
     /** Puffs float at about chest height of the player. */
@@ -65,7 +69,7 @@ public class WispSystem extends TickingSystem<EntityStore> {
             this.from = new Vector3d(from);
             Vector3d delta = new Vector3d(to).sub(from);
             this.length = delta.length();
-            this.speed = Math.max(SPEED, (length - START_DISTANCE) / 4.5);
+            this.speed = Math.max(SPEED, (length - START_DISTANCE) / MAX_TRAVEL_SECONDS);
             this.direction = length > 0 ? delta.div(length) : delta;
             this.sideways = new Vector3d(-direction.z, 0.0, direction.x);
             if (sideways.lengthSquared() > 0.000001) {
@@ -91,7 +95,7 @@ public class WispSystem extends TickingSystem<EntityStore> {
         }
 
         boolean canArrive(float remainingSeconds) {
-            return length > START_DISTANCE && (length - START_DISTANCE) / speed + 0.75 <= remainingSeconds;
+            return length > START_DISTANCE && (length - START_DISTANCE) / speed + PUFF_SECONDS <= remainingSeconds;
         }
     }
 
@@ -157,7 +161,7 @@ public class WispSystem extends TickingSystem<EntityStore> {
             wisp.travelled = Math.min(wisp.length, wisp.travelled + wisp.speed * seconds);
             Vector3d at = wisp.position();
             ParticleUtil.spawnParticleEffect(
-                    WISP_SYSTEM, at.x, at.y, at.z, 0.0F, 0.0F, 0.0F, wisp.scale(), trace.color, null, viewer, store, 0.75F);
+                    WISP_SYSTEM, at.x, at.y, at.z, 0.0F, 0.0F, 0.0F, wisp.scale(), trace.color, null, viewer, store, PUFF_SECONDS);
             if (wisp.travelled >= wisp.length) {
                 it.remove();
             }
