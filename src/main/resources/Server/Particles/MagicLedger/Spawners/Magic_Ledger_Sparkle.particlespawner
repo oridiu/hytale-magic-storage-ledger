@@ -1,0 +1,118 @@
+{
+  "$Comment": "Twinkling stars around and above the chest, so it stands out from afar. They flare, dim and flare again while drifting up. Color stays unset to inherit the item's runtime tint.",
+  "RenderMode": "BlendAdd",
+  "Shape": "Cube",
+  "EmitOffset": {
+    "X": {
+      "Min": 0.5,
+      "Max": 0.7
+    },
+    "Y": {
+      "Min": -0.2,
+      "Max": 0.75
+    },
+    "Z": {
+      "Min": 0.5,
+      "Max": 0.7
+    }
+  },
+  "ParticleRotationInfluence": "Billboard",
+  "LinearFiltering": true,
+  "LightInfluence": 0,
+  "ParticleRotateWithSpawner": false,
+  "CameraOffset": 0.3,
+  "LifeSpan": 8.8,
+  "MaxConcurrentParticles": 14,
+  "ParticleLifeSpan": {
+    "Min": 0.7,
+    "Max": 1.2
+  },
+  "SpawnRate": {
+    "Min": 8,
+    "Max": 11
+  },
+  "InitialVelocity": {
+    "Speed": {
+      "Min": 0.12,
+      "Max": 0.3
+    },
+    "Pitch": {
+      "Min": 80,
+      "Max": 90
+    },
+    "Yaw": {
+      "Max": 360
+    }
+  },
+  "Particle": {
+    "Texture": "Particles/Textures/Basic/Star3.png",
+    "ScaleRatioConstraint": "OneToOne",
+    "Animation": {
+      "0": {
+        "Opacity": 0,
+        "Scale": {
+          "X": {
+            "Min": 0.4,
+            "Max": 0.4
+          }
+        }
+      },
+      "20": {
+        "Opacity": 1,
+        "Scale": {
+          "X": {
+            "Min": 1.8,
+            "Max": 2.2
+          }
+        }
+      },
+      "45": {
+        "Opacity": 0.35,
+        "Scale": {
+          "X": {
+            "Min": 0.9,
+            "Max": 1.1
+          }
+        }
+      },
+      "65": {
+        "Opacity": 0.95,
+        "Scale": {
+          "X": {
+            "Min": 1.5,
+            "Max": 1.8
+          }
+        }
+      },
+      "100": {
+        "Opacity": 0,
+        "Scale": {
+          "X": {
+            "Min": 0.2,
+            "Max": 0.3
+          }
+        },
+        "Rotation": {
+          "Z": {
+            "Min": -45,
+            "Max": 45
+          }
+        }
+      }
+    },
+    "InitialAnimationFrame": {
+      "Scale": {
+        "X": {
+          "Min": 0.05,
+          "Max": 0.075
+        }
+      },
+      "Opacity": 1,
+      "Rotation": {
+        "Z": {
+          "Max": 360
+        }
+      }
+    }
+  }
+}

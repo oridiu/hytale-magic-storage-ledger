@@ -51,6 +51,9 @@
     },
     {
       "SpawnerId": "Magic_Ledger_Glitter"
+    },
+    {
+      "SpawnerId": "Magic_Ledger_Sparkle"
     }
   ],
   "CullDistance": 64

@@ -18,7 +18,7 @@ class ParticleAssetsTest {
 
     @Test
     void everyParticleInheritsTheRuntimeItemColourAndFadesOut() throws Exception {
-        for (String name : List.of("Mist", "Glitter", "Wisp", "Wisp_Glitter")) {
+        for (String name : List.of("Mist", "Glitter", "Sparkle", "Wisp", "Wisp_Glitter")) {
             try (InputStream stream = getClass().getResourceAsStream(
                     "/Server/Particles/MagicLedger/Spawners/Magic_Ledger_" + name + ".particlespawner")) {
                 assertNotNull(stream, name);
