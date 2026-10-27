@@ -113,7 +113,6 @@ public class LedgerPage extends ChoiceBasePage {
         for (int i = 0; i < columns.length; i++) {
             eventBuilder.addEventBinding(CustomUIEventBindingType.Activating, HEADINGS[i], EventData.of("Index", Integer.toString(-1 - i)), false);
         }
-        commandBuilder.set(HEADINGS[column.ordinal()] + (ascending ? " #Up.Visible" : " #Down.Visible"), true);
         commandBuilder.clear("#ElementList");
         for (int i = 0; i < shown.size(); i++) {
             String selector = "#ElementList[" + i + "]";
