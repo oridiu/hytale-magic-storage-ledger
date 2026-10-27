@@ -27,6 +27,14 @@ class TraceRulesTest {
     }
 
     @Test
+    void countsSumPerItem() {
+        assertEquals(Map.of("Ore_Copper", 7, "Wood_Oak", 2), TraceRules.counts(List.of(
+                new Stack("Ore_Copper", 4),
+                new Stack("Wood_Oak", 2),
+                new Stack("Ore_Copper", 3))));
+    }
+
+    @Test
     void equalCountsKeepTheOrderFound() {
         List<Map.Entry<String, Integer>> totals = TraceRules.totals(List.of(new Stack("Wood_Oak", 10), new Stack("Ore_Copper", 10)));
         assertEquals("Wood_Oak", totals.getFirst().getKey());

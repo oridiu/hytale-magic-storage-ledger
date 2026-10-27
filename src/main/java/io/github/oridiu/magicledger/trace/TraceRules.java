@@ -27,15 +27,21 @@ public final class TraceRules {
      */
     @Nonnull
     public static List<Map.Entry<String, Integer>> totals(@Nonnull List<Stack> stacks) {
-        Map<String, Integer> totals = new LinkedHashMap<>();
-        for (Stack stack : stacks) {
-            if (stack.quantity() > 0) {
-                totals.merge(stack.itemId(), stack.quantity(), Integer::sum);
-            }
-        }
-        List<Map.Entry<String, Integer>> sorted = new ArrayList<>(totals.entrySet());
+        List<Map.Entry<String, Integer>> sorted = new ArrayList<>(counts(stacks).entrySet());
         sorted.sort(Comparator.comparing(Map.Entry<String, Integer>::getValue).reversed());
         return sorted;
+    }
+
+    /** How many of each item the stacks hold together, in the order the items were first found. */
+    @Nonnull
+    public static Map<String, Integer> counts(@Nonnull List<Stack> stacks) {
+        Map<String, Integer> counts = new LinkedHashMap<>();
+        for (Stack stack : stacks) {
+            if (stack.quantity() > 0) {
+                counts.merge(stack.itemId(), stack.quantity(), Integer::sum);
+            }
+        }
+        return counts;
     }
 
     /**
