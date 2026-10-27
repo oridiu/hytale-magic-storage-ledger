@@ -1,0 +1,76 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.Magic_Ledger_Upgrade.name",
+    "Description": "server.items.Magic_Ledger_Upgrade.description"
+  },
+  "Icon": "Icons/ItemsGenerated/Recipe_Page.png",
+  "Quality": "Rare",
+  "MaxStack": 1,
+  "Categories": [
+    "Upgrade"
+  ],
+  "Recipe": {
+    "TimeSeconds": 3,
+    "KnowledgeRequired": false,
+    "Input": [
+      {
+        "ItemId": "Ingredient_Fabric_Scrap_Linen",
+        "Quantity": 20
+      },
+      {
+        "ItemId": "Ingredient_Crystal_Void",
+        "Quantity": 6
+      },
+      {
+        "ItemId": "Ingredient_Rune_Shard",
+        "Quantity": 3
+      }
+    ],
+    "BenchRequirement": [
+      {
+        "Id": "Arcanebench",
+        "Type": "Crafting",
+        "Categories": [
+          "Arcane_Misc"
+        ]
+      }
+    ]
+  },
+  "PlayerAnimationsId": "Item",
+  "Model": "Items/Consumables/Recipes/Recipe.blockymodel",
+  "Texture": "Items/Consumables/Recipes/Recipe_Texture.png",
+  "IconProperties": {
+    "Scale": 0.76,
+    "Translation": [
+      -0.895,
+      -1.11
+    ],
+    "Rotation": [
+      33.92,
+      68.795,
+      40.67
+    ]
+  },
+  "Consumable": true,
+  "Interactions": {
+    "Primary": {
+      "Interactions": [
+        {
+          "Type": "MagicLedgerUpgrade"
+        }
+      ]
+    },
+    "Secondary": {
+      "Interactions": [
+        {
+          "Type": "MagicLedgerUpgrade"
+        }
+      ]
+    }
+  },
+  "Tags": {
+    "Type": [
+      "Upgrade"
+    ]
+  }
+}

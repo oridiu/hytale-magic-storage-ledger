@@ -18,8 +18,16 @@ Button #Button {
   }
 
   Label #Count {
+    Anchor: (Width: 90);
     Padding: (Horizontal: 10, Vertical: 5);
-    Style: (TextColor: #ffffff(0.6));
+    Style: (TextColor: #ffffff(0.6), HorizontalAlignment: End);
+  }
+
+  Label #Carried {
+    Anchor: (Width: 90);
+    Padding: (Horizontal: 10, Vertical: 5);
+    Visible: false;
+    Style: (TextColor: #f2c45a, RenderBold: true, HorizontalAlignment: End);
   }
 
   Group {

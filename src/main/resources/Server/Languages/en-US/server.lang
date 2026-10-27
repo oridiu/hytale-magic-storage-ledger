@@ -1,14 +1,23 @@
 items.Magic_Ledger.name = Magic Ledger
 items.Magic_Ledger.description = <i>A magic register that knows what your chests hold. Come close to your chests and open it: it lists everything inside. Pick an item, and a glittering mist shows you the way to every chest that holds it.</i>
 
+items.Magic_Ledger_Upgrade.name = Ledger Upgrade
+items.Magic_Ledger_Upgrade.description = <i>Binds your Magic Ledger to your own pockets. Use it once: from then on the ledger also shows how many of each listed item you carry in your inventory and backpack, so you know what to put away where.</i>
+
 magicledger.ui.ledgerTitle = Magic Ledger
-magicledger.ui.item = Item in nearby chests
-magicledger.ui.count = Count
+magicledger.ui.item = Item
+magicledger.ui.count = In chests
+magicledger.ui.carried = Carried
 magicledger.ui.noItems = No items in chests nearby.
 magicledger.ui.settingsTitle = Magic Ledger Settings
 magicledger.ui.horizontalRadius = Search radius sideways (blocks)
 magicledger.ui.verticalRadius = Search radius up and down (blocks)
 magicledger.ui.radiusHint = 0 uses the range in which workbenches find chests (14 sideways, 6 up and down).
+
+magicledger.upgrade.applied = Ledger upgraded: it now also shows what you carry.
+magicledger.upgrade.already = Your ledger is already upgraded.
+magicledger.upgrade.onlyOne = You can only ever use one Ledger Upgrade.
+magicledger.upgrade.failed = The upgrade could not be saved. Ask an operator to check the server log.
 
 magicledger.trace.none = No chest nearby holds that item any more.
 magicledger.trace.found = {count} chest(s) nearby hold that item.

@@ -15,6 +15,7 @@ import com.hypixel.hytale.server.core.universe.PlayerRef;
 import com.hypixel.hytale.server.core.universe.world.storage.EntityStore;
 
 import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -22,7 +23,8 @@ import java.util.Map;
 /**
  * The Magic Ledger's window: every item in the chests nearby with its total
  * count, most first, laid out like the repair kit's window. Clicking an
- * item marks the chests that hold it.
+ * item marks the chests that hold it. With the Ledger Upgrade a further
+ * column shows how many of each item the player carries.
  */
 public class LedgerPage extends ChoiceBasePage {
 
@@ -33,8 +35,16 @@ public class LedgerPage extends ChoiceBasePage {
     private static final String READ_ANIMATION = "Read";
     private static final String CLOSE_ANIMATION = "Close";
 
-    public LedgerPage(@Nonnull PlayerRef playerRef, @Nonnull List<NearbyChests.Chest> chests) {
-        super(playerRef, elementsFor(chests), LAYOUT);
+    /** Whether the carried column is shown: only for players with the Ledger Upgrade. */
+    private final boolean showCarried;
+
+    /**
+     * @param carried how many of each item the player carries, or null
+     *                without the Ledger Upgrade
+     */
+    public LedgerPage(@Nonnull PlayerRef playerRef, @Nonnull List<NearbyChests.Chest> chests, @Nullable Map<String, Integer> carried) {
+        super(playerRef, elementsFor(chests, carried), LAYOUT);
+        this.showCarried = carried != null;
     }
 
     /** The player holds the open book as if reading while the window is up; everyone nearby sees it. */
@@ -65,6 +75,7 @@ public class LedgerPage extends ChoiceBasePage {
     ) {
         if (getElements() != null && getElements().length > 0) {
             super.build(ref, commandBuilder, eventBuilder, store);
+            commandBuilder.set("#CarriedHeading.Visible", showCarried);
             return;
         }
         // Nothing to list: no column headings, just a short note in the middle.
@@ -75,7 +86,7 @@ public class LedgerPage extends ChoiceBasePage {
     }
 
     @Nonnull
-    private static ChoiceElement[] elementsFor(@Nonnull List<NearbyChests.Chest> chests) {
+    private static ChoiceElement[] elementsFor(@Nonnull List<NearbyChests.Chest> chests, @Nullable Map<String, Integer> carried) {
         List<TraceRules.Stack> stacks = new ArrayList<>();
         for (NearbyChests.Chest chest : chests) {
             for (short slot = 0; slot < chest.container().getCapacity(); slot++) {
@@ -89,20 +100,27 @@ public class LedgerPage extends ChoiceBasePage {
         for (Map.Entry<String, Integer> total : TraceRules.totals(stacks)) {
             // Starts reading the item's icon now, so its colour is ready by the click.
             ItemColors.of(total.getKey());
-            elements.add(new Element(total.getKey(), total.getValue()));
+            Integer inHand = carried != null ? carried.getOrDefault(total.getKey(), 0) : null;
+            elements.add(new Element(total.getKey(), total.getValue(), inHand));
         }
         return elements.toArray(ChoiceElement[]::new);
     }
 
-    /** One row: the item's icon, name and how many of it the chests hold together. */
+    /**
+     * One row: the item's icon, name, how many of it the chests hold together
+     * and, with the upgrade, how many the player carries (blank for none).
+     */
     private static final class Element extends ChoiceElement {
 
         private final String itemId;
         private final int count;
+        @Nullable
+        private final Integer carried;
 
-        Element(@Nonnull String itemId, int count) {
+        Element(@Nonnull String itemId, int count, @Nullable Integer carried) {
             this.itemId = itemId;
             this.count = count;
+            this.carried = carried;
             this.interactions = new ChoiceInteraction[]{new TraceChoice(itemId)};
         }
 
@@ -112,6 +130,10 @@ public class LedgerPage extends ChoiceBasePage {
             commandBuilder.set(selector + " #Icon.ItemId", itemId);
             commandBuilder.set(selector + " #Name.TextSpans", new ItemStack(itemId).getDisplayName());
             commandBuilder.set(selector + " #Count.Text", Integer.toString(count));
+            if (carried != null) {
+                commandBuilder.set(selector + " #Carried.Visible", true);
+                commandBuilder.set(selector + " #Carried.Text", carried > 0 ? Integer.toString(carried) : "");
+            }
         }
     }
 }
