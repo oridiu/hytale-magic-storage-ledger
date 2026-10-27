@@ -4,6 +4,9 @@ items.Magic_Ledger.description = <i>A magic register that knows what your chests
 items.Magic_Ledger_Upgrade.name = Ledger Upgrade
 items.Magic_Ledger_Upgrade.description = <i>Binds your Magic Ledger to your own pockets. Use it once: from then on the ledger also shows how many of each listed item you carry in your inventory and backpack, so you know what to put away where.</i>
 
+# Copy of the base game's Runestone Shard description plus the ledger; the shard's item file points here.
+magicledger.items.Ingredient_Rune_Shard.description = Used to craft Runestones at the <item is="GoblinLab_Tinkering_Bench"/> and the Magic Ledger at the <item is="Bench_Arcane"/>.\n\n<i>Some of these shards might date back to the long-extinct Runebinders, but most are the products of intense magics imprinting upon common stone while in the possession of the powerful.</i>
+
 magicledger.ui.ledgerTitle = Magic Ledger
 magicledger.ui.item = Item
 magicledger.ui.count = In chests

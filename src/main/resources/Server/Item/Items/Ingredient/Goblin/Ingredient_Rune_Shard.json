@@ -1,0 +1,29 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.Ingredient_Rune_Shard.name",
+    "Description": "server.magicledger.items.Ingredient_Rune_Shard.description"
+  },
+  "Icon": "Icons/ItemsGenerated/Ingredient_Rune_Shard.png",
+  "Quality": "Rare",
+  "Categories": [
+    "Items.Ingredients"
+  ],
+  "Model": "Items/Runes/Rune_Shard.blockymodel",
+  "Texture": "Items/Runes/Rune_Textures/Rune_Ability_Blank.png",
+  "PlayerAnimationsId": "Item",
+  "IconProperties": {
+    "Scale": 1,
+    "Rotation": [
+      42,
+      9,
+      15
+    ],
+    "Translation": [
+      -1,
+      -5
+    ]
+  },
+  "MaxStack": 25,
+  "Scale": 0.8,
+  "ItemSoundSetId": "ISS_Items_Gems"
+}
