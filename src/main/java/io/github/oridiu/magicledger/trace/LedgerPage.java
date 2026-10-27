@@ -125,12 +125,10 @@ public class LedgerPage extends ChoiceBasePage {
         }
     }
 
-    /** The heading of the sorted column, e.g. "Item (A-Z)" or "In chests (9-1)". */
+    /** The heading of the sorted column with an arrow for the direction, e.g. "Item ▲". */
     @Nonnull
     private static Message headingText(@Nonnull LedgerSort.Column column, boolean ascending) {
-        String key = column == LedgerSort.Column.NAME
-                ? (ascending ? "server.magicledger.ui.sortAscending" : "server.magicledger.ui.sortDescending")
-                : (ascending ? "server.magicledger.ui.sortLowFirst" : "server.magicledger.ui.sortHighFirst");
+        String key = ascending ? "server.magicledger.ui.sortAscending" : "server.magicledger.ui.sortDescending";
         return Message.translation(key).param("column", Message.translation(HEADING_KEYS[column.ordinal()]));
     }
 
