@@ -14,7 +14,7 @@ $C.@DecoratedContainer {
   }
 
   #Content {
-    Group {
+    Group #Header {
       LayoutMode: Left;
       Padding: (Right: 15, Bottom: 5);
 
@@ -34,6 +34,17 @@ $C.@DecoratedContainer {
       FlexWeight: 1;
       LayoutMode: TopScrolling;
       ScrollbarStyle: $C.@DefaultScrollbarStyle;
+    }
+
+    Group #Empty {
+      FlexWeight: 1;
+      LayoutMode: Middle;
+      Visible: false;
+
+      Label {
+        Text: %server.magicledger.ui.noItems;
+        Style: (Alignment: Center);
+      }
     }
   }
 }

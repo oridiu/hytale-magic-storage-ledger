@@ -67,9 +67,11 @@ public class LedgerPage extends ChoiceBasePage {
             super.build(ref, commandBuilder, eventBuilder, store);
             return;
         }
+        // Nothing to list: no column headings, just a short note in the middle.
         commandBuilder.append(LAYOUT);
-        commandBuilder.clear("#ElementList");
-        commandBuilder.appendInline("#ElementList", "Label { Text: %server.magicledger.ui.noItems; Style: (Alignment: Center); }");
+        commandBuilder.set("#Header.Visible", false);
+        commandBuilder.set("#ElementList.Visible", false);
+        commandBuilder.set("#Empty.Visible", true);
     }
 
     @Nonnull
