@@ -16,25 +16,46 @@ $C.@DecoratedContainer {
   #Content {
     Group #Header {
       LayoutMode: Left;
-      Padding: (Right: 15, Bottom: 5);
+      Padding: (Left: 6, Right: 6, Bottom: 5);
 
-      Label {
+      Button #SortName {
         FlexWeight: 1;
-        Text: %server.magicledger.ui.item;
-        Style: (RenderBold: true);
+        LayoutMode: Left;
+        Style: (Hovered: (Background: #000000(0.2)));
+
+        Label #Label {
+          FlexWeight: 1;
+          Padding: (Right: 10, Vertical: 3);
+          Text: %server.magicledger.ui.item;
+          Style: (RenderBold: true);
+        }
       }
 
-      Label {
-        Anchor: (Width: 90);
-        Text: %server.magicledger.ui.count;
-        Style: (RenderBold: true, HorizontalAlignment: End);
+      Button #SortCount {
+        Anchor: (Width: 120);
+        LayoutMode: Left;
+        Style: (Hovered: (Background: #000000(0.2)));
+
+        Label #Label {
+          FlexWeight: 1;
+          Padding: (Horizontal: 10, Vertical: 3);
+          Text: %server.magicledger.ui.count;
+          Style: (RenderBold: true, HorizontalAlignment: End);
+        }
       }
 
-      Label #CarriedHeading {
-        Anchor: (Width: 90);
+      Button #SortCarried {
+        Anchor: (Width: 120);
+        LayoutMode: Left;
         Visible: false;
-        Text: %server.magicledger.ui.carried;
-        Style: (RenderBold: true, HorizontalAlignment: End, TextColor: #f2c45a);
+        Style: (Hovered: (Background: #000000(0.2)));
+
+        Label #Label {
+          FlexWeight: 1;
+          Padding: (Horizontal: 10, Vertical: 3);
+          Text: %server.magicledger.ui.carried;
+          Style: (RenderBold: true, HorizontalAlignment: End, TextColor: #f2c45a);
+        }
       }
     }
 
